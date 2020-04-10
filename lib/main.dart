@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
         primaryColor: Color(hexColor('#FF5A6F')),
-        accentColor: Colors.red[200],
+        accentColor: Color(0xfffff5f5),
         fontFamily: 'Inter',
         textTheme: TextTheme(
         body1: TextStyle(
