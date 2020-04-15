@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'assets/hex.dart';
+import 'assets/styles/hex.dart';
 import 'pages/BottomNavigation.dart';
 
 void main() => runApp(MyApp());

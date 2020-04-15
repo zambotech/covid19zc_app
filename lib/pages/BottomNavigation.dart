@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Home.dart';
 import 'Cases.dart';
-import 'Stat.dart';
+import 'Map.dart';
 import 'Symptoms.dart';
 import 'Contact.dart';
 
@@ -15,7 +15,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   int _currentIndex = 2;
   final List<Widget> tabs = [
     Cases(),
-    Stat(),
+    Map(),
     Home(),
     Symptoms(),
     Contact(),
@@ -38,8 +38,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
             title: Text('Cases'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.multiline_chart),
-            title: Text('Stats'),
+            icon: Icon(Icons.location_on),
+            title: Text('Map'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

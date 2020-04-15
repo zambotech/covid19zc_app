@@ -1,4 +1,4 @@
-import 'package:covid19zc_app/assets/hex.dart';
+import 'package:covid19zc_app/assets/styles/hex.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -47,11 +47,11 @@ class _HomeState extends State<Home> {
                   : i == 1 ? '93'
                   : '2381',
                   style: TextStyle(
-                    color: Color(0xff44337a),
+                    color: Colors.white,
                   ),
                 ),
                 radius: 30,
-                backgroundColor: Theme.of(context).accentColor
+                backgroundColor: Color(hexColor('#FF5A6F'))
               ),
               Container(
                 width: width - 120,

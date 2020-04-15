@@ -1,6 +1,8 @@
 import 'package:covid19zc_app/data/contacts.dart';
 import 'package:flutter/material.dart';
 
+import '../assets/styles/hex.dart';
+
 class Contact extends StatefulWidget {
   @override
   _ContactState createState() => _ContactState();
@@ -29,13 +31,13 @@ class _ContactState extends State<Contact> {
                   child: Row(
                     children: <Widget>[
                       CircleAvatar(
-                        child: Text( 'ICON',
-                          style: TextStyle(
-                            color: Color(0xff44337a),
-                          ),
+                        child: new CircleAvatar(child: 
+                        new Icon(Icons.phone),
+                        foregroundColor: Colors.white,
+                        backgroundColor: Color(hexColor('#FF5A6F')),
                         ),
-                        radius: 30,
-                        backgroundColor: Theme.of(context).accentColor
+                        radius: 30.0,
+                        backgroundColor: Color(hexColor('#FF5A6F'))
                       ),
                       Container(
                         width: width - 120,
