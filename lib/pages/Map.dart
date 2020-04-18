@@ -21,7 +21,7 @@ class _MapState extends State<Map> {
     PermissionStatus permission = await PermissionHandler()
     .checkPermissionStatus(PermissionGroup.location);
 
-    if (permission == PermissionStatus.denied) {
+    if (permission == PermissionStatus.denied || permission == PermissionStatus.unknown) {
       await PermissionHandler()
       .requestPermissions([PermissionGroup.locationAlways]);
     }
