@@ -1,4 +1,5 @@
 import 'package:covid19zc_app/data/contacts.dart';
+import 'package:covid19zc_app/services/url_launcher.dart';
 import 'package:flutter/material.dart';
 
 import '../assets/styles/hex.dart';
@@ -140,20 +141,30 @@ class _ContactState extends State<Contact> {
       //This loop will add all contacts to your first column in each row
       for (var number = 0; number < (expansionZamboangaTaskForceCounter == 0 ? (globeHotlines.length + 2) : expansionZamboangaTaskForceCounter == 1 ? (policeOperations.length + 2) : (zcdrrmo.length + 2)); number++) {
         (expansionZamboangaTaskForceCounter ==  0 ? globeHotline : expansionZamboangaTaskForceCounter == 1 ? policeOperation : zcdrrmoHotline).add( number == 0 || number == ((expansionZamboangaTaskForceCounter == 0 ? globeHotlines.length : expansionZamboangaTaskForceCounter == 1 ? policeOperations.length : zcdrrmo.length) + 1) ? Text('') : 
-          Text( (expansionZamboangaTaskForceCounter == 0 ? globeHotlines[number - 1] : expansionZamboangaTaskForceCounter == 1 ? policeOperations[number - 1] : zcdrrmo[number - 1]),
-          style: TextStyle(
-            color: Color(0xff44337a),
-            fontWeight: FontWeight.normal
+        GestureDetector(
+          onTap: (){
+            launchDialPad('tel:'+ (expansionZamboangaTaskForceCounter == 0 ? globeHotlines[number - 1] : expansionZamboangaTaskForceCounter == 1 ? policeOperations[number - 1] : zcdrrmo[number - 1]));
+          },
+          child: Text( (expansionZamboangaTaskForceCounter == 0 ? globeHotlines[number - 1] : expansionZamboangaTaskForceCounter == 1 ? policeOperations[number - 1] : zcdrrmo[number - 1]),
+            style: TextStyle(
+              color: Color(0xff44337a),
+              fontWeight: FontWeight.normal
+            ),
           ),
         ));
       }
       //This loop will add all contacts to your second column in each row
       for (var number = 0; number < ( expansionZamboangaTaskForceCounter == 0 ? (smartHotlines.length + 2) : expansionZamboangaTaskForceCounter == 1 ? (healthLines.length + 2) : 0); number++) {
         (expansionZamboangaTaskForceCounter ==  0 ? smartHotline : healthLine).add( number == 0 || number == ((expansionZamboangaTaskForceCounter == 0 ? smartHotlines.length : healthLines.length) + 1) ? Text('') : 
-          Text( (expansionZamboangaTaskForceCounter == 0 ? smartHotlines[number - 1] : healthLines[number - 1]),
-          style: TextStyle(
-            color: Color(0xff44337a),
-            fontWeight: FontWeight.normal
+        GestureDetector(
+          onTap: (){
+            launchDialPad('tel:'+ (expansionZamboangaTaskForceCounter == 0 ? smartHotlines[number - 1] : healthLines[number - 1]));
+          },
+          child: Text( (expansionZamboangaTaskForceCounter == 0 ? smartHotlines[number - 1] : healthLines[number - 1]),
+            style: TextStyle(
+              color: Color(0xff44337a),
+              fontWeight: FontWeight.normal
+            ),
           ),
         ));
       }
@@ -219,10 +230,15 @@ class _ContactState extends State<Contact> {
                   itemCount: expansionZCMCTeleconsultationCounter == 0 ? zcmcSmart0.length : zcmcSmart1.length,
                   itemBuilder: (context, position){
                     return Center(
-                      child: Text( expansionZCMCTeleconsultationCounter == 0 ? zcmcSmart0[position] : zcmcSmart1[position],
-                        style: TextStyle(
-                          color: Color(0xff44337a),
-                          fontWeight: FontWeight.normal
+                      child: GestureDetector(
+                        onTap: (){
+                          launchDialPad('tel:'+(expansionZCMCTeleconsultationCounter == 0 ? zcmcSmart0[position] : zcmcSmart1[position]));
+                        },
+                        child: Text( expansionZCMCTeleconsultationCounter == 0 ? zcmcSmart0[position] : zcmcSmart1[position],
+                          style: TextStyle(
+                            color: Color(0xff44337a),
+                            fontWeight: FontWeight.normal
+                          ),
                         ),
                       )
                     );
@@ -250,10 +266,15 @@ class _ContactState extends State<Contact> {
                   itemCount: expansionZCMCTeleconsultationCounter == 0 ? zcmcGlobe0.length : zcmcGlobe1.length,
                   itemBuilder: (context, position){
                     return Center(
-                      child: Text( expansionZCMCTeleconsultationCounter == 0 ?  zcmcGlobe0[position] : zcmcGlobe1[position],
-                        style: TextStyle(
-                          color: Color(0xff44337a),
-                          fontWeight: FontWeight.normal
+                      child: GestureDetector(
+                        onTap: (){
+                          launchDialPad('tel:'+(expansionZCMCTeleconsultationCounter == 0 ?  zcmcGlobe0[position] : zcmcGlobe1[position]));
+                        },
+                        child: Text( expansionZCMCTeleconsultationCounter == 0 ?  zcmcGlobe0[position] : zcmcGlobe1[position],
+                          style: TextStyle(
+                            color: Color(0xff44337a),
+                            fontWeight: FontWeight.normal
+                          ),
                         ),
                       )
                     );
@@ -274,10 +295,15 @@ class _ContactState extends State<Contact> {
     List<Widget> colChildren = List<Widget>();
     for (var expansionReliefOperationsCounter = 0; expansionReliefOperationsCounter < (reliefOperations.length + 1); expansionReliefOperationsCounter++) {
       colChildren.add(
-        Text( expansionReliefOperationsCounter != (reliefOperations.length) ? reliefOperations[expansionReliefOperationsCounter] : '',
-          style: TextStyle(
-            color: Color(0xff44337a),
-            fontWeight: FontWeight.normal
+        GestureDetector(
+          onTap: (){
+            launchDialPad('tel:'+(expansionReliefOperationsCounter != (reliefOperations.length) ? reliefOperations[expansionReliefOperationsCounter] : ''));
+          },
+          child: Text( expansionReliefOperationsCounter != (reliefOperations.length) ? reliefOperations[expansionReliefOperationsCounter] : '',
+            style: TextStyle(
+              color: Color(0xff44337a),
+              fontWeight: FontWeight.normal
+            ),
           ),
         )
       );
