@@ -147,7 +147,8 @@ class _ContactState extends State<Contact> {
           },
           child: Text( (expansionZamboangaTaskForceCounter == 0 ? globeHotlines[number - 1] : expansionZamboangaTaskForceCounter == 1 ? policeOperations[number - 1] : zcdrrmo[number - 1]),
             style: TextStyle(
-              color: Color(0xff44337a),
+              color: Colors.blue,
+              decoration: TextDecoration.underline,
               fontWeight: FontWeight.normal
             ),
           ),
@@ -162,7 +163,8 @@ class _ContactState extends State<Contact> {
           },
           child: Text( (expansionZamboangaTaskForceCounter == 0 ? smartHotlines[number - 1] : healthLines[number - 1]),
             style: TextStyle(
-              color: Color(0xff44337a),
+              color: Colors.blue,
+              decoration: TextDecoration.underline,
               fontWeight: FontWeight.normal
             ),
           ),
@@ -225,7 +227,7 @@ class _ContactState extends State<Contact> {
                   physics: NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: 10,
+                    childAspectRatio: 8,
                   ),
                   itemCount: expansionZCMCTeleconsultationCounter == 0 ? zcmcSmart0.length : zcmcSmart1.length,
                   itemBuilder: (context, position){
@@ -236,7 +238,8 @@ class _ContactState extends State<Contact> {
                         },
                         child: Text( expansionZCMCTeleconsultationCounter == 0 ? zcmcSmart0[position] : zcmcSmart1[position],
                           style: TextStyle(
-                            color: Color(0xff44337a),
+                            color: Colors.blue,
+                            decoration: TextDecoration.underline,
                             fontWeight: FontWeight.normal
                           ),
                         ),
@@ -261,7 +264,7 @@ class _ContactState extends State<Contact> {
                   physics: NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: 10,
+                    childAspectRatio: 8,
                   ),
                   itemCount: expansionZCMCTeleconsultationCounter == 0 ? zcmcGlobe0.length : zcmcGlobe1.length,
                   itemBuilder: (context, position){
@@ -272,7 +275,8 @@ class _ContactState extends State<Contact> {
                         },
                         child: Text( expansionZCMCTeleconsultationCounter == 0 ?  zcmcGlobe0[position] : zcmcGlobe1[position],
                           style: TextStyle(
-                            color: Color(0xff44337a),
+                            color: Colors.blue,
+                            decoration: TextDecoration.underline,
                             fontWeight: FontWeight.normal
                           ),
                         ),
@@ -301,7 +305,8 @@ class _ContactState extends State<Contact> {
           },
           child: Text( expansionReliefOperationsCounter != (reliefOperations.length) ? reliefOperations[expansionReliefOperationsCounter] : '',
             style: TextStyle(
-              color: Color(0xff44337a),
+              color: Colors.blue,
+              decoration: TextDecoration.underline,
               fontWeight: FontWeight.normal
             ),
           ),
