@@ -1,3 +1,5 @@
+import 'package:covid19zc_app/formatter/display_text.dart';
+
 class Figures{
   int id;
   String value;
@@ -10,6 +12,6 @@ class Figures{
     this.value = data['value'] != null  ? data['value'].toString() : "0";
     this.dataUpdatedAt = data['dataUpdatedAt'] ?? "not-available";
     this.reference = data['reference'] ?? List();
-    this.key = key.toUpperCase() ?? "";
+    this.key = capitalize(key) ?? "";
   }
 }

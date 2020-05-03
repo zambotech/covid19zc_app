@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:covid19zc_app/components/my_list_tile.dart';
 import 'package:covid19zc_app/formatter/display_text.dart';
+import 'package:covid19zc_app/models/home_articles.dart';
 import 'package:covid19zc_app/models/home_figures.dart';
 import 'package:http/http.dart' as http;
 import 'package:covid19zc_app/assets/styles/hex.dart';
@@ -13,20 +15,31 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   bool isDispose = false;
-  StreamController _streamController;
-  Stream<dynamic> fetchData() async* {
+  StreamController _streamControllerOfTracker;
+  StreamController _streamControllerOfArticles;
+  double mathPI = 3.1415926535897932;
+
+  Stream<dynamic> fetchDataOfTracker() async* {
     final response = await http.get( 'http://api.covid19zc.com/figures');
     yield json.decode(response.body);
   }
+  Stream<dynamic> fetchDataOfArticles() async* {
+    final response = await http.get( 'http://api.covid19zc.com/articles');
+    yield json.decode(response.body);
+  }
   loadData() async{
-    fetchData().listen((onData){
-      _streamController.add(onData);
+    fetchDataOfTracker().listen((onData){
+      _streamControllerOfTracker.add(onData);
+    });
+    fetchDataOfArticles().listen((onData){
+      _streamControllerOfArticles.add(onData);
     });
   }
 
   @override
   void initState() {
-    _streamController = new StreamController();
+    _streamControllerOfTracker = new StreamController();
+    _streamControllerOfArticles = new StreamController();
     loadData();
     Timer.periodic(Duration(hours: 1), (timer) { 
       if (!isDispose) {
@@ -58,7 +71,7 @@ class _HomeState extends State<Home> {
         padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Center(
           child: StreamBuilder(
-            stream: _streamController.stream,
+            stream: _streamControllerOfTracker.stream,
             builder: (context, snapshot){
               if (snapshot.hasError)
                 return new Text('Error...');
@@ -84,6 +97,7 @@ class _HomeState extends State<Home> {
     List<Widget> homeChildren = List<Widget>();
     data.forEach((key, data){
       Figures dataFigures = Figures(key, data);
+      ///[Cards] for [Home Tracker]
       homeChildren.add( Card(
         elevation: 5.0,
         margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
@@ -122,6 +136,50 @@ class _HomeState extends State<Home> {
         ),
       ));
     });
+    ///[Card] for the [News and Articles]
+    homeChildren.add(
+      Card(
+        elevation: 5.0,
+        margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+        child: Container(
+          height: (height / 8) * mathPI,
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            children: <Widget>[
+              Text('Latest News'),
+              SizedBox(height: 10),
+              StreamBuilder(
+                stream: _streamControllerOfArticles.stream,
+                builder: (context, snapshot){
+                  if (snapshot.hasError)
+                    return new Text('Error...');
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.waiting:
+                      return new Text('Loading...');
+                      break;
+                    default:
+                    return Expanded(
+                      child: ListView.builder(
+                        itemCount: snapshot.data.length,
+                        itemBuilder: (context, position) {
+                          ArticlesModel articlesModel = ArticlesModel(snapshot.data[position]);
+                          return MyListTile(
+                            title: articlesModel.title,
+                            sourceName: articlesModel.sourceName,
+                            publishedDate: articlesModel.publishedDate,
+                            sourceURL: articlesModel.sourceUrl,
+                          );
+                        },
+                      ),
+                    );
+                  }
+                }
+              ),
+            ],
+          ),
+        )
+      )
+    );
     return homeChildren;
   }
 }
