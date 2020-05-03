@@ -1,6 +1,7 @@
 
-import 'package:covid19zc_app/services/url_launcher.dart';
 import 'package:flutter/material.dart';
+
+import '../services/url_launcher.dart';
 
 class MyListTile extends StatelessWidget {
   const MyListTile({

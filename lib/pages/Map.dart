@@ -106,7 +106,13 @@ class _MapState extends State<Map> {
                 )
               )
             ),
-            tetuan, tumaga
+            tetuan, 
+            tumaga, 
+            staMaria, 
+            talonTalon, 
+            sinunuc, 
+            cityJail, 
+            upper
           ]
         ),
         CircleLayerOptions(
@@ -118,7 +124,13 @@ class _MapState extends State<Map> {
             borderColor: Colors.blueAccent,
             radius: 40
           ),
-            tetuanCircleMarker, tumagaCircleMarker
+            tetuanCircleMarker, 
+            tumagaCircleMarker, 
+            staMariaCircleMarker, 
+            talonTalonCircleMarker, 
+            sinunucCircleMarker, 
+            cityJailCircleMarker, 
+            upperCircleMarker
           ]
         ),
       ]
